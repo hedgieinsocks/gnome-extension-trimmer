@@ -14,11 +14,11 @@ function init() {
 function fillPreferencesWindow(window) {
     const settings = ExtensionUtils.getSettings();
 
-    // Trim Mode
     const page = new Adw.PreferencesPage();
     const group = new Adw.PreferencesGroup();
     page.add(group);
 
+    // Trim Mode
     const rowMode = new Adw.ActionRow({
         title: 'Trim Mode',
     });
