@@ -2,8 +2,7 @@
     "uuid": "trimmer@hedgie.tech",
     "name": "Trimmer",
     "description": "Automatically trim the text stored in your clipboard",
-    "version": 2,
-    "shell-version": [ "43", "44" ],
+    "shell-version": ["45"],
     "settings-schema": "org.gnome.shell.extensions.trimmer",
     "url": "https://github.com/hedgieinsocks/trimmer"
 }
