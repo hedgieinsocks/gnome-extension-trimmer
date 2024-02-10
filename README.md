@@ -1,4 +1,4 @@
-# ✂️ Trimmer - GNOME extension
+# Trimmer
 
 ## Automatically trim the text in your clipboard
 
