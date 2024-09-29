@@ -6,47 +6,52 @@ import Gtk from "gi://Gtk";
 const trimModes = ["both", "left", "right"];
 
 export default class TrimmerPreferences extends ExtensionPreferences {
-    fillPreferencesWindow(window) {
-        const settings = this.getSettings();
-        const page = new Adw.PreferencesPage();
-        const group = new Adw.PreferencesGroup();
-        page.add(group);
+  fillPreferencesWindow(window) {
+    const settings = this.getSettings();
+    const page = new Adw.PreferencesPage();
+    const group = new Adw.PreferencesGroup();
+    page.add(group);
 
-        // Trim Mode
-        const rowMode = new Adw.ActionRow({
-            title: "Trim Mode",
-        });
-        group.add(rowMode);
+    // Trim Mode
+    const rowMode = new Adw.ActionRow({
+      title: "Trim Mode",
+    });
+    group.add(rowMode);
 
-        const dropdown = new Gtk.DropDown({
-            valign: Gtk.Align.CENTER,
-            model: Gtk.StringList.new(trimModes),
-            selected: settings.get_string("trim-mode"),
-        });
+    const dropdown = new Gtk.DropDown({
+      valign: Gtk.Align.CENTER,
+      model: Gtk.StringList.new(trimModes),
+      selected: settings.get_string("trim-mode"),
+    });
 
-        settings.bind("trim-mode", dropdown, "selected", Gio.SettingsBindFlags.DEFAULT);
+    settings.bind(
+      "trim-mode",
+      dropdown,
+      "selected",
+      Gio.SettingsBindFlags.DEFAULT,
+    );
 
-        rowMode.add_suffix(dropdown);
-        rowMode.activatable_widget = dropdown;
+    rowMode.add_suffix(dropdown);
+    rowMode.activatable_widget = dropdown;
 
-        // Trim String
-        const rowString = new Adw.ActionRow({
-            title: "Trim String",
-            subtitle: "Additionally strip a string",
-        });
-        group.add(rowString);
+    // Trim String
+    const rowString = new Adw.ActionRow({
+      title: "Trim String",
+      subtitle: "Additionally strip a string",
+    });
+    group.add(rowString);
 
-        const entry = new Gtk.Entry({
-            text: settings.get_string("trim-string"),
-            valign: Gtk.Align.CENTER,
-            hexpand: true,
-        });
+    const entry = new Gtk.Entry({
+      text: settings.get_string("trim-string"),
+      valign: Gtk.Align.CENTER,
+      hexpand: true,
+    });
 
-        settings.bind("trim-string", entry, "text", Gio.SettingsBindFlags.DEFAULT);
+    settings.bind("trim-string", entry, "text", Gio.SettingsBindFlags.DEFAULT);
 
-        rowString.add_suffix(entry);
-        rowString.activatable_widget = entry;
+    rowString.add_suffix(entry);
+    rowString.activatable_widget = entry;
 
-        window.add(page);
-    }
+    window.add(page);
+  }
 }
